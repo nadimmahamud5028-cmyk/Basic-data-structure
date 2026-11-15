@@ -4,20 +4,32 @@ int main()
 {
     int n,q;
     cin >> n >> q;
-    vector<int>v(n+1);
-    for(int i=0;i<n;i++)
+    vector<long long>v(n+1);
+    for(int i=1;i<=n;i++)
     {
         cin >> v[i];
     }
+    vector<long long>pre(n+1);
+    pre[1] = v[1];
+    for(int i =2;i<=n;i++)
+    {
+        pre[i] =pre[i-1] + v[i];
+    }
     while(q--)
     {
-        int l,r,sum =0;
-        cin >> l >> r;
-        for(int i =l;i <=r;i++)
+        int l,r;
+        cin >> l >>r;
+        long long sum =0;
+        if(l == 1)
         {
-            sum+=v[i];
+            sum = pre[r];
+        }
+        else
+        {
+            sum =pre[r] - pre[l-1];
         }
         cout << sum <<'\n';
     }
+    cout << '\n';
     return 0;
 }
