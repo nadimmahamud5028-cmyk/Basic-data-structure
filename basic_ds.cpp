@@ -1,35 +1,47 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    int n,q;
-    cin >> n >> q;
-    vector<long long>v(n+1);
-    for(int i=1;i<=n;i++)
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
     {
         cin >> v[i];
     }
-    vector<long long>pre(n+1);
-    pre[1] = v[1];
-    for(int i =2;i<=n;i++)
+    sort(v.begin(), v.end());
+
+    int l = 0, r = n - 1;
+
+    int s;
+    cin >> s;
+    int flag = 0;
+    while (l <= r)
     {
-        pre[i] =pre[i-1] + v[i];
-    }
-    while(q--)
-    {
-        int l,r;
-        cin >> l >>r;
-        long long sum =0;
-        if(l == 1)
+
+        int mid = (l + r) / 2;
+
+        if (v[mid] == s)
         {
-            sum = pre[r];
+            flag = 1;
+            break;
+        }
+        else if (v[mid] > s)
+        {
+            r = mid - 1;
         }
         else
         {
-            sum =pre[r] - pre[l-1];
+            l = mid + 1;
         }
-        cout << sum <<'\n';
     }
-    cout << '\n';
+    if (flag == 1)
+    {
+        cout << "Found" << '\n';
+    }
+    else
+    {
+        cout << "Not found" << '\n';
+    }
     return 0;
 }
