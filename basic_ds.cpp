@@ -2,23 +2,19 @@
 using namespace std;
 int main()
 {
-    int n;
-    cin >> n;
-    vector<int>v(n);
-    vector<bool>v1(1002,false);
-    for(int i =0;i<n;i++)
+    string s;
+    cin >> s;
+    vector<int>v(26,0);
+    for(int i=0;i<s.size();i++)
     {
-        cin >> v[i];
-        v1[v[i]] = true;
+        v[s[i] - 'a']++;
     }
-    int cnt =0;
-    for(int i=0;i<n;i++)
+    for(int i =0;i<26;i++)
     {
-        if(v1[v[i] +1 ]  == true)
+        if(v[i] > 0)
         {
-            cnt++;
+            cout << char('a'+i) << " : " << v[i] << '\n';
         }
-    }
-    cout << cnt <<'\n';
+    }  
     return 0;
 }
