@@ -1,47 +1,24 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
     int n;
     cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    vector<int>v(n);
+    vector<bool>v1(1002,false);
+    for(int i =0;i<n;i++)
     {
         cin >> v[i];
+        v1[v[i]] = true;
     }
-    sort(v.begin(), v.end());
-
-    int l = 0, r = n - 1;
-
-    int s;
-    cin >> s;
-    int flag = 0;
-    while (l <= r)
+    int cnt =0;
+    for(int i=0;i<n;i++)
     {
-
-        int mid = (l + r) / 2;
-
-        if (v[mid] == s)
+        if(v1[v[i] +1 ]  == true)
         {
-            flag = 1;
-            break;
-        }
-        else if (v[mid] > s)
-        {
-            r = mid - 1;
-        }
-        else
-        {
-            l = mid + 1;
+            cnt++;
         }
     }
-    if (flag == 1)
-    {
-        cout << "Found" << '\n';
-    }
-    else
-    {
-        cout << "Not found" << '\n';
-    }
+    cout << cnt <<'\n';
     return 0;
 }
