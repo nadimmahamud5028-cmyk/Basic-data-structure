@@ -2,33 +2,31 @@
 using namespace std;
 int main()
 {
-    int n,m;
-    cin >> n >> m;
-    vector<int>v(n+1);
-    vector<long long>pre(n+1);
-    for(int i =1;i<=n;i++)
+    int t;
+    cin >> t;
+    while(t--)
     {
-        cin >> v[i];
-    }
-    pre[1] = v[1];
-    for(int i=2;i<=n;i++)
-    {
-        pre[i] = pre[i-1] + v[i];
-    }
-    while(m--)
-    {
-        int l,r;
-        long long sum=0;
-        cin >> l >> r;
-        if(l == 1)
+        int n,m,cnt =0;
+        cin >> n >> m;
+        string s1,s2;
+        cin >> s1 >> s2;
+        int mn = min(s1.size(),s2.size());
+        for(int i = 0;i< mn ;i++)
         {
-                sum = pre[r];
+                if(s1[i] == s2[i])
+                {
+                        cnt++;
+                }
+                else
+                {
+                        break;
+                }
         }
-        else
+        for(int i=0;i<cnt;i++)
         {
-                sum = pre[r] - pre[l-1];
+                cout << s1[i] ;
         }
-        cout << sum << '\n';
+        cout << '\n';
     }
     return 0;
 }
