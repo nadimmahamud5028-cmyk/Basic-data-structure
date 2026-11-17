@@ -6,27 +6,36 @@ int main()
     cin >> t;
     while(t--)
     {
-        int n,m,cnt =0;
-        cin >> n >> m;
-        string s1,s2;
-        cin >> s1 >> s2;
-        int mn = min(s1.size(),s2.size());
-        for(int i = 0;i< mn ;i++)
+        int n,sum =0,flag =0,flag2 =0;
+        cin >> n;
+        vector<int>v(n);
+        for(int i= 0;i<n;i++)
         {
-                if(s1[i] == s2[i])
-                {
-                        cnt++;
-                }
-                else
-                {
-                        break;
-                }
+            cin >> v[i];
+            if(v[i]%2 == 0)
+            {
+                flag =1;
+            }
+            if(v[i]%2 == 1)
+            {
+                flag2 =1;
+            }
+            sum+=v[i];
         }
-        for(int i=0;i<cnt;i++)
+        if(sum%2 == 0 && flag == 1)
+
         {
-                cout << s1[i] ;
+            cout <<"YES" <<'\n';
         }
-        cout << '\n';
+        else if(sum%2 == 1 && flag2 == 1)
+        {
+            cout << "YES" <<'\n';
+        }
+        else
+        {
+            cout <<"NO" <<'\n';
+        }
+
     }
     return 0;
 }
