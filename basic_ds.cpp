@@ -1,49 +1,32 @@
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-        int n;
-
-        cin >> n;
-        vector<int> v(n);
-        for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int n,m,cnt =0;
+        cin >> n >> m;
+        string s1,s2;
+        cin >> s1 >> s2;
+        int mn = min(s1.size(),s2.size());
+        for(int i = 0;i< mn ;i++)
         {
-                cin >> v[i];
-        }
-        sort(v.begin(),v.end());
-        int m;
-        cin >> m;
-        while (m--)
-        {
-                int k;
-                cin >> k;
-                int l = 0, r = n - 1;
-                int flag =0;
-                while (l <= r)
+                if(s1[i] == s2[i])
                 {
-                        int mid = (l + r) / 2;
-                        
-                        if (k == v[mid])
-                        {
-                                cout << "YES" << '\n';
-                                flag =1;
-                                break;
-                        }
-                        else if (k > v[mid])
-                        {
-                                l = mid + 1;
-                        }
-                        else
-                        {
-                                r = mid - 1;
-                        }
+                        cnt++;
                 }
-                if(flag == 0)
+                else
                 {
-                        cout << "NO" << '\n';
+                        break;
                 }
         }
-
-        return 0;
+        for(int i=0;i<cnt;i++)
+        {
+                cout << s1[i] ;
+        }
+        cout << '\n';
+    }
+    return 0;
 }
