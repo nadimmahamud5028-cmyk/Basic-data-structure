@@ -6,28 +6,28 @@ int main()
     cin >> t;
     while(t--)
     {
-        int n,sum =0,flag =0,flag2 =0;
+        int n;
         cin >> n;
-        vector<int>v(n);
-        for(int i= 0;i<n;i++)
+        string s;
+        cin >> s;
+        int cnt =0,flag =0;
+        for(int i =0;i<s.size() ;i++)
         {
-            cin >> v[i];
-            if(v[i]%2 == 0)
+            if(s[i] == 'a' || s[i] == 'e' ||s[i] == 'i' ||s[i] == 'o' ||s[i] == 'u')
+            {
+                cnt =0;
+            }
+            else
+            {
+                cnt++;
+            }
+            if(cnt == 4)
             {
                 flag =1;
             }
-            if(v[i]%2 == 1)
-            {
-                flag2 =1;
-            }
-            sum+=v[i];
+            
         }
-        if(sum%2 == 0 && flag == 1)
-
-        {
-            cout <<"YES" <<'\n';
-        }
-        else if(sum%2 == 1 && flag2 == 1)
+        if(flag == 1)
         {
             cout << "YES" <<'\n';
         }
@@ -35,7 +35,6 @@ int main()
         {
             cout <<"NO" <<'\n';
         }
-
     }
     return 0;
 }
