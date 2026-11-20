@@ -5,19 +5,30 @@ class Node
         public:
                 int val;
                 Node* next;
+                Node(int val)
+                {
+                    this->val = val;
+                    this->next = NULL;
+                }
 };
 int main()
 {
-    Node a,b,c;
-    a.val = 10;
-    b.val = 20;
-    c.val = 30;
+    Node* head = new Node(10);
+    Node* a = new Node(20);
+    Node* b = new Node(30);
+    Node* c = new Node(40);
 
-    a.next = &b;
-    b.next = &c;
-    c.next = NULL;
+    head->next = a;
+    a->next= b;
+    b->next= c;
+    c->next=NULL;
 
-    cout << a.val <<" "  << b.val <<" "  << c.val <<'\n';
-    
+    Node*tmp = head;
+    while(tmp != NULL)
+    {
+        cout << tmp->val << " ";
+        tmp = tmp->next;
+    }
+    tmp = head;
     return 0;
 }
