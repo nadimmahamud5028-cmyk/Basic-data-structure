@@ -11,13 +11,13 @@ int main()
     Node a,b,c;
     a.val = 10;
     b.val = 20;
-   
+    c.val = 30;
 
     a.next = &b;
-   
-    b.next = NULL;
+    b.next = &c;
+    c.next = NULL;
 
-    cout << a.val <<" "  << b.val <<'\n';
+    cout << a.val <<" "  << b.val <<" "  << c.val <<'\n';
     
     return 0;
 }
