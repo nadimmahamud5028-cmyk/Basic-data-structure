@@ -1,32 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
+class Node
+{
+        public:
+                int val;
+                Node* next;
+};
 int main()
 {
-    int t;
-    cin >> t;
-    while(t--)
-    {
-        int n,m,cnt =0;
-        cin >> n >> m;
-        string s1,s2;
-        cin >> s1 >> s2;
-        int mn = min(s1.size(),s2.size());
-        for(int i = 0;i< mn ;i++)
-        {
-                if(s1[i] == s2[i])
-                {
-                        cnt++;
-                }
-                else
-                {
-                        break;
-                }
-        }
-        for(int i=0;i<cnt;i++)
-        {
-                cout << s1[i] ;
-        }
-        cout << '\n';
-    }
+    Node a,b,c;
+    a.val = 10;
+    b.val = 20;
+    c.val =30;
+
+    a.next = &b;
+    b.next = &c;
+    c.next = NULL;
+
+    cout << a.val <<" "  << b.val <<'\n';
+    
     return 0;
 }
