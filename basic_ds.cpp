@@ -12,38 +12,40 @@ class Node
     }
 };
 
-void insert_at_any_position(Node*&head,int idx,int val)
+void insert_at_tail(Node*&head,Node*&tail,int val)
 {
     Node*newnode = new Node(val);
-    Node*tmp = head;
-    for(int i =0;i<idx-1;i++)
+    if(head == NULL)
     {
-        tmp = tmp->next;
+        head = newnode;
+        tail = newnode;
+        return;
+
     }
-    newnode->next=tmp->next;
-    tmp->next=newnode;
+    tail->next= newnode;
+    tail = tail->next;
 }
-void print_ll(Node*&head)
+
+void print_ll(Node*head)
 {
     Node*tmp = head;
     while(tmp != NULL)
     {
-        cout << tmp->val<<" ";
-        tmp= tmp->next;
+        cout << tmp->val <<" ";
+        tmp = tmp->next;
     }
+    cout <<'\n';
 }
 int main()
 {
     Node*head = new Node(10);
     Node*a = new Node(20);
-    Node*b = new Node(30);
+    Node*tail = new Node(30);
 
     head->next= a;
-    a->next=b;
-    b->next= NULL;
-
-    insert_at_any_position(head,2,100);
-    insert_at_any_position(head,2,200);
+    a->next = tail;
+    insert_at_tail(head,tail,100);
+    insert_at_tail(head,tail,200);
     print_ll(head);
     return 0;
 }
