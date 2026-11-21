@@ -41,6 +41,8 @@ int main()
     b->next= c;
     c->next= NULL;
     insert_at_head(head,100);
+    insert_at_head(head,200);
+    insert_at_head(head,300);
     print_ll(head);
     
     return 0;
