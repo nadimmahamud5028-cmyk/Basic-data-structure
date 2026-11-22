@@ -1,51 +1,55 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 class Node
 {
-    public:
+public:
     int val;
-    Node*next;
+    Node *next;
     Node(int val)
     {
-        this->val= val;
-        this->next= NULL;
+        this->val = val;
+        this->next = NULL;
     }
 };
-
-void insert_at_tail(Node*&head,Node*&tail,int val)
+void insert_at_tail_op(Node *&head, Node *&tail, int val)
 {
-    Node*newnode = new Node(val);
-    if(head == NULL)
+    Node *newnode = new Node(val);
+
+    if (head == NULL)
     {
         head = newnode;
         tail = newnode;
         return;
-
     }
-    tail->next= newnode;
-    tail = tail->next;
+    tail->next = newnode;
+    tail = newnode;
 }
-
-void print_ll(Node*head)
+void print_ll(Node *head)
 {
-    Node*tmp = head;
-    while(tmp != NULL)
+    Node *tmp = head;
+    while (tmp != NULL)
     {
-        cout << tmp->val <<" ";
+        cout << tmp->val << " ";
         tmp = tmp->next;
     }
-    cout <<'\n';
+    cout << '\n';
 }
 int main()
 {
-    Node*head = new Node(10);
-    Node*a = new Node(20);
-    Node*tail = new Node(30);
+    Node *head = NULL;
 
-    head->next= a;
-    a->next = tail;
-    insert_at_tail(head,tail,100);
-    insert_at_tail(head,tail,200);
+    Node *tail = NULL;
+    int val;
+    while (1)
+    {
+        cin >> val;
+        if (val == -1)
+        {
+            break;
+        }
+        insert_at_tail_op(head, tail, val);
+    }
+
     print_ll(head);
     return 0;
 }
