@@ -27,12 +27,30 @@ void insert_at_tail_op(Node *&head, Node *&tail, int val)
 void print_ll(Node *head)
 {
     Node *tmp = head;
+    if(tmp == NULL)
+    {
+        return;
+    }
     while (tmp != NULL)
     {
         cout << tmp->val << " ";
         tmp = tmp->next;
     }
     cout << '\n';
+}
+void dlt_head(Node*&head,Node*&tail)
+{
+    if(head == NULL)
+    {
+        return;
+    }
+    Node*dltnode =head;
+    head = head->next;
+     if(head == NULL)
+    {
+        tail = dltnode;
+    }
+
 }
 int main()
 {
@@ -49,7 +67,7 @@ int main()
         }
         insert_at_tail_op(head, tail, val);
     }
-
+    dlt_head(head,tail);
     print_ll(head);
     return 0;
 }
