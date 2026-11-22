@@ -39,7 +39,7 @@ void print_ll(Node *head)
     cout << '\n';
 }
 
-void dlt_at_any_pos(Node*&head,int idx)
+void dlt_at_tail(Node*&head,Node*&tail,int idx)
 {
     Node*tmp = head;
     for(int i=0;i<idx-1;i++)
@@ -49,6 +49,7 @@ void dlt_at_any_pos(Node*&head,int idx)
     Node*dltnode = tmp->next;
     tmp->next= tmp->next->next;
     delete dltnode;
+    tail =tmp ;
 }
 
 int main()
@@ -66,7 +67,7 @@ int main()
         }
         insert_at_tail_op(head, tail, val);
     }
-    dlt_at_any_pos(head,2);
+    dlt_at_tail(head,tail,3);
     print_ll(head);
     return 0;
 }
