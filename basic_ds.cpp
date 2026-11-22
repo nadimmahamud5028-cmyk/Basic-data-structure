@@ -39,17 +39,22 @@ void print_ll(Node *head)
     cout << '\n';
 }
 
-void dlt_at_tail(Node*&head,Node*&tail,int idx)
+void sort_ll(Node*&head)
 {
-    Node*tmp = head;
-    for(int i=0;i<idx-1;i++)
+    if(head == NULL)
     {
-        tmp = tmp->next;
+        return;
     }
-    Node*dltnode = tmp->next;
-    tmp->next= tmp->next->next;
-    delete dltnode;
-    tail =tmp ;
+    for(Node* i =head;i->next != NULL;i =i->next)
+    {
+        for(Node* j = i->next;j != NULL;j =j->next)
+        {
+            if(i->val > j->val)
+            {
+                swap(i->val,j->val);
+            }
+        }
+    }
 }
 
 int main()
@@ -67,7 +72,7 @@ int main()
         }
         insert_at_tail_op(head, tail, val);
     }
-    dlt_at_tail(head,tail,3);
+    sort_ll(head);
     print_ll(head);
     return 0;
 }
