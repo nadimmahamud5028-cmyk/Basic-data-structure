@@ -9,20 +9,33 @@ class Node
     Node(int val)
     {
         this->val= val;
-        this->next=next;
-        this->prev=prev;
+        this->next=NULL;
+        this->prev=NULL;
     }
 };
 
-void doubly_linked_list(Node*&head)
+void doubly_linked_list(Node*&head,Node*&tail,int val)
+{
+    Node*newnode = new Node(val);
+    if(head == NULL)
+    {
+        head = newnode;
+        tail = newnode;
+        return;
+    }
+    head->prev= newnode;
+    newnode->next=head;
+    head = newnode;
+}
+
+void print_ll(Node*&head)
 {
     Node*tmp = head;
     while(tmp != NULL)
     {
-        cout << tmp->val<<" ";
-        tmp= tmp->next;
+        cout << tmp->val<< " ";
+        tmp = tmp->next;
     }
-    cout <<'\n';
 }
 int main()
 {
@@ -36,6 +49,7 @@ int main()
     a->next=tail;
     tail->prev= a;
 
-    doubly_linked_list(head);
+    doubly_linked_list(head,tail,5);
+    print_ll(head);
     return 0;
 }
