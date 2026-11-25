@@ -23,9 +23,15 @@ void doubly_linked_list(Node*&head,Node*&tail,int val)
         tail = newnode;
         return;
     }
-    head->prev= newnode;
-    newnode->next=head;
-    head = newnode;
+    if(tail == NULL)
+    {
+        head = newnode;
+        tail = newnode;
+        return;
+    }
+    newnode->prev= tail;
+    tail->next=newnode;
+    tail = newnode;
 }
 
 void print_ll(Node*&head)
