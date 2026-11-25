@@ -1,78 +1,41 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 class Node
 {
-public:
+    public:
     int val;
-    Node *next;
+    Node*next;
+    Node*prev;
     Node(int val)
     {
-        this->val = val;
-        this->next = NULL;
+        this->val= val;
+        this->next=next;
+        this->prev=prev;
     }
 };
-void insert_at_tail_op(Node *&head, Node *&tail, int val)
-{
-    Node *newnode = new Node(val);
 
-    if (head == NULL)
-    {
-        head = newnode;
-        tail = newnode;
-        return;
-    }
-    tail->next = newnode;
-    tail = newnode;
-}
-void print_ll(Node *head)
+void doubly_linked_list(Node*&head)
 {
-    Node *tmp = head;
-    if(tmp == NULL)
+    Node*tmp = head;
+    while(tmp != NULL)
     {
-        return;
+        cout << tmp->val<<" ";
+        tmp= tmp->next;
     }
-    while (tmp != NULL)
-    {
-        cout << tmp->val << " ";
-        tmp = tmp->next;
-    }
-    cout << '\n';
+    cout <<'\n';
 }
-
-void sort_ll(Node*&head)
-{
-    if(head == NULL)
-    {
-        return;
-    }
-    for(Node* i =head;i->next != NULL;i =i->next)
-    {
-        for(Node* j = i->next;j != NULL;j =j->next)
-        {
-            if(i->val > j->val)
-            {
-                swap(i->val,j->val);
-            }
-        }
-    }
-}
-
 int main()
 {
-    Node *head = NULL;
+    Node*head = new Node(10);
+    Node*a = new Node(20);
+    Node*tail = new Node(30);
+    
+    head->next=a;
+    a->prev= head;
 
-    Node *tail = NULL;
-    int val;
-    while (1)
-    {
-        cin >> val;
-        if (val == -1)
-        {
-            break;
-        }
-        insert_at_tail_op(head, tail, val);
-    }
-    sort_ll(head);
-    print_ll(head);
+    a->next=tail;
+    tail->prev= a;
+
+    doubly_linked_list(head);
     return 0;
 }
